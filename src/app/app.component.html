@@ -1,0 +1,14 @@
+<!--nav bar-->
+<header>
+  <ul>
+    <li><a [routerLink]="['/home']" [routerLinkActive]="['actived']">Home</a></li>
+    <li><a [routerLink]="['/productos']" [routerLinkActive]="['actived']">Products</a></li>
+    <li><a [routerLink]="['/crear-producto']" [routerLinkActive]="['actived']">Create Product</a></li>
+  </ul>
+</header>
+<section id="content">
+  <router-outlet></router-outlet>
+</section>
+<footer>
+  <p>Creado por {{autor}} &copy; 2022</p>
+</footer>

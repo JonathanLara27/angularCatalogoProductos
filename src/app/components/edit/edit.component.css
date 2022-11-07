@@ -1,0 +1,161 @@
+.contenedor{
+    width: 80%;
+    height: 100%;
+    box-shadow: #00000066 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px 0px 0px inset;
+    margin: 0 auto;
+    margin-top: 50px;
+    border-radius: 10px;
+    color:black;
+}
+
+h2, h3, p{
+    margin-left: 10px;
+    padding: 5px;
+}
+h2{
+    margin-top: 10px;
+    text-align: center;
+}
+
+/*Estilos para la tabla*/
+
+table {
+    border-collapse: collapse;
+    border: 1px solid black;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+th {
+    border: 1px solid black;
+    padding: 10px;
+    width: 40%;
+}
+td,th{
+    text-align: left;
+}
+button{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    display: block;
+}
+
+form input{
+    width: 80%;
+    padding: 5px;
+    border: 1px solid rgb(230, 230, 230);
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-left: 10px;
+}
+
+.form-select{
+    width: 80%;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-left: 10px;
+}
+form label{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    display: block;
+}
+
+form input[type=number]{
+    width: 30%;
+}
+
+form input[type="file"]{
+   border: none;
+}
+
+.right-colum{
+    width: 50%;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.left-colum{
+    width: 50%;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.clearfix{
+    clear: both;
+    float: none;
+}
+
+form input[type="submit"]{
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #198754;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+    display: block;
+
+}
+form input[disabled]{
+    opacity: 0.7;
+    cursor:not-allowed;
+}
+
+form input[type="submit"]:hover{
+    background-color: #28a745;
+}
+
+/*Estilos al mensaje succes y failed*/
+.mesagge{
+    width: 38%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.mesagge.succes{
+    background-color: rgba(0,255,0,0.3);
+    color: green;
+}
+.mesagge.failed {
+    background-color: rgba(255,0,0,0.3);
+    color: red;
+}
+
+.card_image{
+    max-width: 80%;
+    border-radius: 10px;
+    display: flex;
+    margin : 0 auto;
+}
+
+.card_image img{
+    min-width: 300px;
+    min-height: 200px;
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 10px;
+    margin : 0 auto;
+}
+
+
