@@ -18,10 +18,12 @@ export class ProductService {
         return 'Probando el servicio de Angular';
     }
 
-    saveProduct(product: Product): Observable<any>{
+    saveProduct(product: Product, token: any): Observable<any>{
         let params = JSON.stringify(product);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
+        // añadimos el token
+        headers=headers.append('Authorization', token);
+        
         return this._http.post(this.url+'save-product', params, {headers: headers});
     }
 
@@ -37,15 +39,18 @@ export class ProductService {
         return this._http.get(this.url+'product/'+id, {headers: headers});
     }
 
-    deleteProduct(id: any): Observable<any>{
+    deleteProduct(id: any, token: any): Observable<any>{
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
-
+        // añadimos el token
+        headers=headers.append('Authorization', token);
         return this._http.delete(this.url+'product/'+id, {headers: headers});
     }
 
-    updateProduct(product: Product): Observable<any>{
+    updateProduct(product: Product, token: any): Observable<any>{
         let params = JSON.stringify(product);
         let headers = new HttpHeaders().set('Content-Type', 'application/json');
+        // añadimos el token
+        headers=headers.append('Authorization', token);
 
         return this._http.put(this.url+'product/'+product._id, params, {headers: headers});
     }

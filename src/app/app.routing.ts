@@ -8,6 +8,8 @@ import { CreateComponent } from "./components/create/create.component";
 import { DetailComponent } from "./components/detail/detail.component";
 import { EditComponent } from "./components/edit/edit.component";
 import { ProductsComponent } from "./components/products/products.component";
+import { LoginComponent } from "./components/login/login.component";
+import { RegisterComponent } from "./components/register/register.component";
 
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },
@@ -16,6 +18,8 @@ const appRoutes: Routes = [
     { path: "producto/:id", component: DetailComponent },
     { path: "editar-producto/:id", component: EditComponent },
     { path: "productos", component: ProductsComponent },
+    { path: "login", component: LoginComponent },
+    { path: "register", component: RegisterComponent },
     { path: "**", component: HomeComponent }
 ];
 

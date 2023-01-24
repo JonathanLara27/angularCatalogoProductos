@@ -29,7 +29,6 @@ export class ProductsComponent implements OnInit {
   getProducts(){
     this._productService.getProducts().subscribe(
       response => {
-        console.log(response);
         if(response.productos){
           this.products = response.productos;
         }
@@ -43,7 +42,6 @@ export class ProductsComponent implements OnInit {
   buscarProducto(form: any){
     this._productService.searchProduct(this.busqueda).subscribe(
       response => {
-        console.log(response);
         if(response.productos){
           this.products = response.productos;
           //actualizamos la vista

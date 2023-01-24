@@ -4,10 +4,6 @@
     
 }
 
-   .card-img img{
-    height: 35%;
-    width: 100%;
-   }
    
    .card-info {
     padding-top: 10%;
@@ -38,18 +34,6 @@
     width: 40%;
    }
 
-   .card{
-    width: 30%;
-    display: inline-block;
-    margin: 10px 10px 10px 10px;
-    border-radius: 10px;
-   }
-
-   .card-button span a{
-    text-decoration: none;
-    color: #252525;
-    text-align: center;
-   }
    
    .card-button:hover {
     border: 1px solid #ffcaa6;

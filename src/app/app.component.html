@@ -1,14 +1,50 @@
-<!--nav bar-->
-<header>
-  <ul>
-    <li><a [routerLink]="['/home']" [routerLinkActive]="['actived']">Home</a></li>
-    <li><a [routerLink]="['/productos']" [routerLinkActive]="['actived']">Products</a></li>
-    <li><a [routerLink]="['/crear-producto']" [routerLinkActive]="['actived']">Create Product</a></li>
-  </ul>
-</header>
-<section id="content">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand">App catalogo Productos</a>
+  <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="container">
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/productos']" [routerLinkActive]="['active']">Products</a>
+        </li>
+        <li class="nav-item" *ngIf="token">
+          <a class="nav-link" [routerLink]="['/crear-producto']" [routerLinkActive]="['active']">Create
+            Product</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="!iduser">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['active']" *ngIf="token">Register</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="iduser">
+        <li class="nav-item" *ngIf="username">
+          <span class="nav-link text-white mr-5">Bienvenido {{username}}</span>
+        </li>
+        <li class="nav-item">
+          <a (click)="cerrarsesion()" class="nav-link" role="button">Cerrar sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+<section class="container-fluid">
   <router-outlet></router-outlet>
 </section>
-<footer>
-  <p>Creado por {{autor}} &copy; 2022</p>
+<!--Boton para regresar al inicio de la pagina-->
+<div class="" (click)="scrolltop()" #top id="iconsubir">
+  <img src="../assets/img/flecha-hacia-arriba.png" alt="" height="40px" width="40px">
+</div>
+<footer class="sticky-bottom bg-dark">
+  <p class="text-center text-white w-100">Creado por {{autor}} &copy; 2022</p>
 </footer>

@@ -1,207 +1,203 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-<section class="contenedor" *ngIf="product">
-    <h2>{{title}}</h2>
+<section class="container" *ngIf="product">
+    <h2 class="text-center mt-4">{{title}}</h2>
     <form action="" #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
-        <div class="mesagge succes" *ngIf="status=='success'">
-            <span>El producto se ha creado correctamente, puedes verlo <a
-                    [routerLink]="['/producto',save_product._id]">aquí</a></span>
-        </div>
+        <h3 class="text-center mt-3 mb-3">Detalles Principales: </h3>
+        <!--Informacion principal-->
+        <section class="card shadow-lg bg-body rounded">
+            <div class="card-body">
+                <div class="row justify-content-evenly">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <input type="text" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
+                            [(ngModel)]="product.nombre" placeholder="Nombre del producto" required>
+                        <span *ngIf="nombre.invalid && nombre.touched" class="text-bg-danger">El nombre es
+                            obligatorio</span>
+                    </div>
 
-        <div class="mesagge failed" *ngIf="status=='failed'">
-            <span>El producto no se ha podido crear</span>
-        </div>
-        <h3>Detalles Principales: </h3>
-        <!--Table-->
-        <div class="principal">
-            <div class="left-colum">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nombre" name="nombre" #nombre="ngModel"
-                        [(ngModel)]="product.nombre" placeholder="Nombre del producto" required>
-                    <label for="nombre">Nombre del producto</label>
-                    <span *ngIf="nombre.invalid && nombre.touched" class="msg-error">El nombre es obligatorio</span>
-                </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <input type="text" class="form-control" id="descripcion" placeholder="Descripción del producto"
+                            name="descripcion" #descripcion="ngModel" [(ngModel)]="product.descripcion" required>
+                        <span *ngIf="descripcion.invalid && descripcion.touched" class="text-bg-danger">La descripción
+                            es
+                            obligatoria</span>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="categoria">Categoria del producto</label>
+                        <select class="form-select" id="categoria" name="categoria" [(ngModel)]="product.categoria"
+                            #categoria="ngModel" required>
+                            <option value="Laptop" selected>Laptop</option>
+                            <option value="Tablet">Tablet</option>
+                            <option value="Smartphone">Smartphone</option>
+                            <option value="Smartwatch">Smartwatch</option>
+                            <option value="Accesorios">Accesorios</option>
+                            <option value="Computadora">Computadora</option>
+                            <option value="TV">TV</option>
+                            <option value="Videojuegos">Videojuegos</option>
+                            <option value="Audio">Audio</option>
+                            <option value="Cámaras">Cámaras</option>
+                            <option value="Consolas">Consolas</option>
+                            <option value="TV box">TV box</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                        <span *ngIf="categoria.invalid && categoria.touched" class="text-bg-danger">La categoria es
+                            obligatoria</span>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="precio" class="form-label">Precio del producto</label>
+                        <input type="number" class="form-control" id="precio" placeholder="Precio del producto"
+                            name="precio" #precio="ngModel" [(ngModel)]="product.precio" required>
+                        <span *ngIf="precio.invalid && precio.touched" class="text-bg-danger">El precio es
+                            obligatorio</span>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="stock" class="form-label">Stock del producto</label>
+                        <input type="number" class="form-control" id="stock" placeholder="Stock del producto"
+                            name="stock" #stock="ngModel" [(ngModel)]="product.stock" required>
 
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="descripcion" placeholder="Descripción del producto"
-                        name="descripcion" #descripcion="ngModel" [(ngModel)]="product.descripcion" required>
-                    <label for="descripcion">Descripción del producto</label>
-                    <span *ngIf="descripcion.invalid && descripcion.touched" class="msg-error">La descripción es
-                        obligatoria</span>
-                </div>
-                <div class="form-floating mb-3">
-                    <label for="categoria">Categoria del producto</label>
-                    <select class="form-select" id="categoria" name="categoria" [(ngModel)]="product.categoria"
-                        #categoria="ngModel" required>
-                        <option value="Laptop" selected>Laptop</option>
-                        <option value="Tablet">Tablet</option>
-                        <option value="Smartphone">Smartphone</option>
-                        <option value="Smartwatch">Smartwatch</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Computadora">Computadora</option>
-                        <option value="TV">TV</option>
-                        <option value="Videojuegos">Videojuegos</option>
-                        <option value="Audio">Audio</option>
-                        <option value="Cámaras">Cámaras</option>
-                        <option value="Consolas">Consolas</option>
-                        <option value="TV box">TV box</option>
-                        <option value="Otros">Otros</option>
-                    </select>
-                    <span *ngIf="categoria.invalid && categoria.touched" class="msg-error">La categoria es
-                        obligatoria</span>
+                        <span *ngIf="stock.invalid && stock.touched" class="text-bg-danger">El stock es
+                            obligatorio</span>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label class=" -text" for="inputGroupFile01">Subir Imagen</label>
+                        <input type="file" #imagen="ngModel" [(ngModel)]="product.imagen"
+                            (change)="fileChangeEvent($event)" class="form-control" id="inputGroupFile01">
+                    </div>
                 </div>
             </div>
-            <div class="right-colum">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="precio" placeholder="Precio del producto"
-                        name="precio" #precio="ngModel" [(ngModel)]="product.precio" required>
-                    <label for="precio">Precio del producto</label>
-                    <span *ngIf="precio.invalid && precio.touched" class="msg-error">El precio es obligatorio</span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="stock" placeholder="Stock del producto" name="stock"
-                        #stock="ngModel" [(ngModel)]="product.stock" required>
-                    <label for="stock">Stock del producto</label>
-                    <span *ngIf="stock.invalid && stock.touched" class="msg-error">El stock es obligatorio</span>
-                </div>
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupFile01">Subir Imagen</label>
-                    <input type="file" #imagen="ngModel" [(ngModel)]="product.imagen" (change)="fileChangeEvent($event)"
-                        class="form-control" id="inputGroupFile01">
-                </div>
-            </div>
+        </section>
+        <div class="text-center mt-3 mb-3">
+            <button (click)="mostrarDG('true')" *ngIf="DetallesGenerales=='false'" class="btn btn-dark"><i class="bi bi-arrow-bar-down"></i> Mostrar Detalles Generales </button>
         </div>
-        <div class="clearfix"></div>
-        <button (click)="mostrarDG('true')" *ngIf="DetallesGenerales=='false'">Mostrar Detalles Generales</button>
-        <h3 *ngIf="DetallesGenerales=='true'">Detalles Generales: </h3>
-        <button (click)="mostrarDG('false')" *ngIf="DetallesGenerales=='true'">Ocultar Detalles Generales</button>
-        <div *ngIf="DetallesGenerales=='true'">
-            <div class="left-colum">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="color" placeholder="Color del producto" name="color"
-                        [(ngModel)]="product.color" required>
-                    <label for="color">Color del producto</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="marca" placeholder="Marca del producto" name="marca"
-                        [(ngModel)]="product.marca" required>
-                    <label for="marca">Marca del producto</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="camaraf" placeholder="Camara frontal" name="camaraf"
-                        [(ngModel)]="product.camaraf" required>
-                    <label for="camaraf">Modelo del producto</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="camarap" placeholder="Camara Posterior" name="camarap"
-                        [(ngModel)]="product.camarap" required>
-                    <label for="camarap">Camara Posterior</label>
-                </div>
-            </div>
-            <div class="right-colum">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="pantalla" placeholder="Tamaño de pantalla"
-                        name="pantalla" [(ngModel)]="product.pantalla" required>
-                    <label for="pantalla">Tamaño de pantalla</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="bateria" placeholder="Bateria" name="bateria"
-                        [(ngModel)]="product.bateria" required>
-                    <label for="bateria">Bateria</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="ram" placeholder="Ram" name="ram"
-                        [(ngModel)]="product.ram" required>
-                    <label for="ram">Ram</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="rom" placeholder="rom" name="rom"
-                        [(ngModel)]="product.rom" required>
-                    <label for="rom">Rom</label>
-                </div>
-            </div>
+        <h3 *ngIf="DetallesGenerales=='true'" class="text-center mt-3 mb-3">Detalles Generales: </h3>
+        <div class="text-center mt-3 mb-3">
+            <button (click)="mostrarDG('false')" *ngIf="DetallesGenerales=='true'" class="btn btn-dark"><i class="bi bi-arrow-bar-up"></i> Ocultar Detalles Generales</button>
         </div>
-        <div class="clearfix"></div>
+        <!--Informacion General-->
+        <section *ngIf="DetallesGenerales=='true'" class="card shadow-lg bg-body rounded">
+            <div class="card-body">
+                <div class="row justify-content-evenly">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <input type="text" class="form-control" id="color" placeholder="Color del producto" name="color"
+                            [(ngModel)]="product.color" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <input type="text" class="form-control" id="marca" placeholder="Marca del producto" name="marca"
+                            [(ngModel)]="product.marca" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <input type="text" class="form-control" id="camaraf" placeholder="Camara frontal" name="camaraf"
+                            [(ngModel)]="product.camaraf" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <input type="text" class="form-control" id="camarap" placeholder="Camara Posterior"
+                            name="camarap" [(ngModel)]="product.camarap" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="pantalla" class="form-label">Tamaño de pantalla</label>
+                        <input type="number" class="form-control" id="pantalla" placeholder="Tamaño de pantalla"
+                            name="pantalla" [(ngModel)]="product.pantalla" required>
 
-        <button (click)="mostrarDE('true')" *ngIf="DetallesEspecificos=='false'">Mostrar Detalles Especificos</button>
-        <h3 *ngIf="DetallesEspecificos=='true'">Detalles Específicos: </h3>
-        <button (click)="mostrarDE('false')" *ngIf="DetallesEspecificos=='true'">Ocultar Detalles Especificos</button>
-        <!--Table-->
-        <div *ngIf="DetallesEspecificos=='true'">
-            <div class="left-colum">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="modeloproducto" placeholder="Modelo del producto"
-                        name="modeloproducto" [(ngModel)]="product.modeloproducto" required>
-                    <label for="modeloproducto">Modelo del producto</label>
-                </div>
-                <!--tipopantalla-->
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="tipopantalla" name="tipopantalla" [(ngModel)]="product.tipopantalla"
-                        required>
-                        <option selected value="IPS">IPS</option>
-                        <option value="OLED">OLED</option>
-                        <option value="AMOLED">AMOLED</option>
-                        <option value="LCD">LCD</option>
-                        <option value="POLED">POLED</option>
-                    </select>
-                    <label for="tipopantalla">Tipo de pantalla</label>
-                </div>
-                <!--tipoentrada-->
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="tipoentrada" name="tipoentrada" [(ngModel)]="product.tipoentrada"
-                        required>
-                        <option selected value="USB">USB</option>
-                        <option value="Carga inalambrica">Carga inalambrica</option>
-                        <option value="Jack 3.5">Jack 3.5</option>
-                        <option value="Jack 2.5">Jack 2.5</option>
-                        <option value="Jack 2.0">Jack 2.0</option>
-                        <option value="Tipo C">Tipo C</option>
-                        <option value="Micro USB">Micro USB</option>
-                    </select>
-                    <label for="tipoentrada">Tipo de entrada</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="sistema" placeholder="Sistema Operativo"
-                        name="sistemaoperativo" [(ngModel)]="product.sistemaoperativo" required>
-                    <label for="sistemaoperativo">Sistema Operativo</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="procesador" placeholder="Procesador" name="procesador"
-                        [(ngModel)]="product.procesador" required>
-                    <label for="procesador">Procesador</label>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="bateria" class="form-label">Bateria</label>
+                        <input type="number" class="form-control" id="bateria" placeholder="Bateria" name="bateria"
+                            [(ngModel)]="product.bateria" required>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="ram" class="form-label">Ram</label>
+                        <input type="number" class="form-control" id="ram" placeholder="Ram" name="ram"
+                            [(ngModel)]="product.ram" required>
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="rom" class="form-label">Rom</label>
+                        <input type="number" class="form-control" id="rom" placeholder="rom" name="rom"
+                            [(ngModel)]="product.rom" required>
+                    </div>
                 </div>
             </div>
 
-            <div class="right-colum">
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="peso" placeholder="Peso en Kg" name="peso"
-                        [(ngModel)]="product.peso" required>
-                    <label for="peso">Peso en Kg</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="alto" placeholder="Alto" name="alto"
-                        [(ngModel)]="product.alto" required>
-                    <label for="alto">Alto</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="ancho" placeholder="Ancho" name="ancho"
-                        [(ngModel)]="product.ancho" required>
-                    <label for="ancho">Ancho</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="profundidad" placeholder="Profundidad"
-                        name="profundidad" [(ngModel)]="product.profundidad" required>
-                    <label for="profundidad">Profundidad</label>
+        </section>
+
+        <div class="text-center mt-3 mb-3">
+            <button (click)="mostrarDE('true')" *ngIf="DetallesEspecificos=='false'" class="btn btn-dark"><i class="bi bi-arrow-bar-down"></i> Mostrar Detalles Especificos</button>
+        </div>
+        <h3 *ngIf="DetallesEspecificos=='true'" class="text-center mt-3 mb-3">Detalles Específicos: </h3>
+        <div class="text-center mt-3 mb-3">
+            <button (click)="mostrarDE('false')" *ngIf="DetallesEspecificos=='true'" class="btn btn-dark"><i class="bi bi-arrow-bar-up"></i> Ocultar Detalles Especificos</button>
+        </div>
+        <!--Informacion Especifica-->
+        <section *ngIf="DetallesEspecificos=='true'" class="card shadow-lg bg-body rounded">
+            <div class="card-body">
+                <div class="row justify-content-evenly">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="modeloproducto" class="form-label">Modelo del producto</label>
+                        <input type="text" class="form-control" id="modeloproducto"
+                            name="modeloproducto" [(ngModel)]="product.modeloproducto" required>
+                    </div>
+                    <!--tipopantalla-->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="tipopantalla" class="form-label">Tipo de pantalla</label>
+                        <select class="form-select" id="tipopantalla" name="tipopantalla"
+                            [(ngModel)]="product.tipopantalla" required>
+                            <option selected value="IPS">IPS</option>
+                            <option value="OLED">OLED</option>
+                            <option value="AMOLED">AMOLED</option>
+                            <option value="LCD">LCD</option>
+                            <option value="POLED">POLED</option>
+                        </select>
+                    </div>
+                    <!--tipoentrada-->
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="tipoentrada" class="form-label">Tipo de entrada</label>
+                        <select class="form-select" id="tipoentrada" name="tipoentrada"
+                            [(ngModel)]="product.tipoentrada" required>
+                            <option selected value="USB">USB</option>
+                            <option value="Carga inalambrica">Carga inalambrica</option>
+                            <option value="Jack 3.5">Jack 3.5</option>
+                            <option value="Jack 2.5">Jack 2.5</option>
+                            <option value="Jack 2.0">Jack 2.0</option>
+                            <option value="Tipo C">Tipo C</option>
+                            <option value="Micro USB">Micro USB</option>    
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="sistemaoperativo" class="form-label">Sistema Operativo</label>
+                        <input type="text" class="form-control" id="sistema" 
+                            name="sistemaoperativo" [(ngModel)]="product.sistemaoperativo" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="procesador" class="form-label">Procesador</label>
+                        <input type="text" class="form-control" id="procesador" 
+                            name="procesador" [(ngModel)]="product.procesador" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="peso" class="form-label">Peso en Kg</label>
+                        <input type="number" class="form-control" id="peso" placeholder="Peso en Kg" name="peso"
+                            [(ngModel)]="product.peso" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="alto" class="form-label">Alto</label>
+                        <input type="number" class="form-control" id="alto" placeholder="Alto" name="alto"
+                            [(ngModel)]="product.alto" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="ancho" class="form-label">Ancho</label>
+                        <input type="number" class="form-control" id="ancho" placeholder="Ancho" name="ancho"
+                            [(ngModel)]="product.ancho" required>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3">
+                        <label for="profundidad" class="form-label">Profundidad</label>
+                        <input type="number" class="form-control" id="profundidad" placeholder="Profundidad"
+                            name="profundidad" [(ngModel)]="product.profundidad" required>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <div class="container text-center d-block mt-3 mb-3 " *ngIf="token">
+            <button type="submit" [disabled]="!productForm.valid" class="btn btn-success"> <i class="bi bi-save"></i> Crear producto</button>
         </div>
-        <div class="clearfix"></div>
-        <div></div>
-        <input type="submit" value="Crear producto" [disabled]="!productForm.valid" class="btn btn-success">
-        
 
 
     </form>

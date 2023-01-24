@@ -1,15 +1,12 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-<section class="contenedor">
-  <h2>{{title}}</h2>
-  <div class="card" *ngFor="let product of products">
+<section class="row justify-content-evenly">
+  <h2 class="text-center mt-4">{{title}}</h2>
+  <div class="card col-lg-3 col-md-4 col-sm-6 col-xs-12 m-3 mb-3 mt-3 shadow-lg bg-body rounded"
+    *ngFor="let product of products">
     <div class="card-img">
-      <img src="{{url+'get-image/'+product.imagen}}" alt="" *ngIf="product.imagen" class="card-img-top">
+      <img src="{{url+'get-image/'+product.imagen}}" alt="" *ngIf="product.imagen"
+        class="card-img-top rounded mx-auto d-block">
     </div>
-    <div class="card-body" *ngIf="product.nombre">
+    <div class="card-body " *ngIf="product.nombre">
       <p class="card-title">{{product.nombre}}</p>
       <p class="card-subtitle mb-2 text-muted">{{product.descripcion}}</p>
     </div>
@@ -18,11 +15,13 @@
     </ul>
     <div class="card-body">
       <div class="container text-center">
-            <a [routerLink]="['/producto', product._id]" class="btn btn-dark">Ver producto</a>
+        <a [routerLink]="['/producto', product._id]" class="btn btn-dark m-1"><i class="bi bi-info-circle"></i> Ver
+          producto</a>
       </div>
     </div>
   </div>
 </section>
+
 
 <!--
     public _id: string,

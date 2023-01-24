@@ -1,154 +1,146 @@
-
-<section class="contenedor" *ngIf="product">
-    <h2 *ngIf="title">{{title}}</h2>
-    <div class="card_image" *ngIf="product.imagen">
-        <img src="{{url+'get-image/'+product.imagen}}" alt="">
-    </div>
+<section class="container-fluid" *ngIf="product">
+    <h2 *ngIf="title" class="text-center mt-4">{{title}}</h2>
+    <section class="row justify-content-evenly" *ngIf="product.imagen">
+        <div class="card col-lg-3 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3 shadow-lg bg-body rounded">
+            <div class="card-img">
+                <img src="{{url+'get-image/'+product.imagen}}" alt="" class="card-img-top rounded mx-auto d-block">
+            </div>
+        </div>
+    </section>
     <div class="informacion">
-        <h3 *ngIf="product.nombre">Detalles Principales: </h3>
+        <h3 *ngIf="product.nombre" class="text-center mt-4">Detalles Principales: </h3>
         <!--Card para detalles generales-->
-        <div class="card">
-            <table *ngIf="product.nombre" class="table table-sucess">
+        <section class="row justify-content-evenly">
+            <table *ngIf="product.nombre"
+                class="table table-hover col-lg-6 col-md-6 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3 shadow-lg bg-body rounded">
                 <tbody>
                     <tr *ngIf="product.nombre">
-                        <th scope="row">Nombre</th>
+                        <th>Nombre</th>
                         <td>{{product.nombre}}</td>
                     </tr>
                     <tr *ngIf="product.descripcion">
-                        <th scope="row">Descripción</th>
+                        <th>Descripción</th>
                         <td>{{product.descripcion}}</td>
                     </tr>
                     <tr *ngIf="product.categoria">
-                        <th scope="row">Categoria</th>
+                        <th>Categoria</th>
                         <td>{{product.categoria}}</td>
                     </tr>
                     <tr *ngIf="product.precio">
-                        <th scope="row">Precio</th>
+                        <th>Precio</th>
                         <td>{{'S/ '+product.precio.toFixed(2)}}</td>
                     </tr>
                     <tr *ngIf="product.stock">
-                        <th scope="row">Stock</th>
+                        <th>Stock</th>
                         <td>{{product.stock}}</td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </section>
+        <h3 *ngIf="product.color" class="text-center mt-4">Detalles Generales: </h3>
+        <section class="row justify-content-evenly">
+                <table *ngIf="product.color" class="table table-hover col-lg-6 col-md-4 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3 shadow-lg bg-body rounded">
+                    <tbody>
+                        <tr *ngIf="product.color">
+                            <th>Color</th>
+                            <td>{{product.color}}</td>
+                        </tr>
+                        <tr *ngIf="product.marca">
+                            <th>Marca</th>
+                            <td>{{product.marca}}</td>
+                        </tr>
+                        <tr *ngIf="product.ram">
+                            <th>Memoria Ram</th>
+                            <td>{{product.ram +' GB'}}</td>
+                        </tr>
+                        <tr *ngIf="product.rom">
+                            <th>Memoria ROM</th>
+                            <td>{{product.rom +' GB'}}</td>
+                        </tr>
+                        <tr *ngIf="product.pantalla">
+                            <th>Tamaño de pantalla</th>
+                            <td>{{product.pantalla +"'"}}</td>
+                        </tr>
+                        <tr *ngIf="product.resolucion">
+                            <th>Resolución de pantalla</th>
+                            <td>{{product.resolucion}}</td>
+                        </tr>
+                        <tr *ngIf="product.bateria && product.bateria!=0">
+                            <th>Bateria</th>
+                            <td>{{product.bateria+" mAh"}}</td>
+                        </tr>
+                        <tr *ngIf="product.camaraf && product.camaraf!='0'">
+                            <th>Camara frontal</th>
+                            <td>{{product.camaraf}}</td>
+                        </tr>
+                        <tr *ngIf="product.camarap && product.camarap!='0'">
+                            <th>Camara principal</th>
+                            <td>{{product.camarap}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </section>
 
-
-        <h3 *ngIf="product.color">Detalles Generales: </h3>
-        <div class="card">
-            <!--Table-->
-            <table *ngIf="product.color" class="table table-sucess">
-                <tbody>
-                    <tr *ngIf="product.color">
-                        <th>Color</th>
-                        <td>{{product.color}}</td>
-                    </tr>
-                    <tr *ngIf="product.marca">
-                        <th>Marca</th>
-                        <td>{{product.marca}}</td>
-                    </tr>
-                    <tr *ngIf="product.ram">
-                        <th>Memoria Ram</th>
-                        <td>{{product.ram +' GB'}}</td>
-                    </tr>
-                    <tr *ngIf="product.rom">
-                        <th>Memoria ROM</th>
-                        <td>{{product.rom +' GB'}}</td>
-                    </tr>
-                    <tr *ngIf="product.pantalla">
-                        <th>Tamaño de pantalla</th>
-                        <td>{{product.pantalla +"'"}}</td>
-                    </tr>
-                    <tr *ngIf="product.resolucion">
-                        <th>Resolución de pantalla</th>
-                        <td>{{product.resolucion}}</td>
-                    </tr>
-                    <tr *ngIf="product.bateria">
-                        <th>Bateria</th>
-                        <td>{{product.bateria+" mAh"}}</td>
-                    </tr>
-                    <tr *ngIf="product.camaraf">
-                        <th>Camara frontal</th>
-                        <td>{{product.camaraf}}</td>
-                    </tr>
-                    <tr *ngIf="product.camarap">
-                        <th>Camara principal</th>
-                        <td>{{product.camarap}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <h3 *ngIf="product.modeloproducto">Detalles especificos: </h3>
-        <div class="card">
-            <table *ngIf="product.modeloproducto" class="table table-sucess">
-                <tbody>
-                    <tr *ngIf="product.modeloproducto">
-                        <th>Modelo</th>
-                        <td>{{product.modeloproducto}}</td>
-                    </tr>
-                    <tr *ngIf="product.tipopantalla">
-                        <th>Tipo de pantalla</th>
-                        <td>{{product.tipopantalla}}</td>
-                    </tr>
-                    <tr *ngIf="product.tipoentrada">
-                        <th>Tipo de entrada</th>
-                        <td>{{product.tipoentrada}}</td>
-                    </tr>
-                    <tr *ngIf="product.sistemaoperativo">
-                        <th>Sistema operativo</th>
-                        <td>{{product.sistemaoperativo}}</td>
-                    </tr>
-                    <tr *ngIf="product.procesador">
-                        <th>Procesador</th>
-                        <td>{{product.procesador}}</td>
-                    </tr>
-                    <tr *ngIf="product.peso">
-                        <th>Peso</th>
-                        <td>{{product.peso+ " KG"}}</td>
-                    </tr>
-                    <tr *ngIf="product.alto">
-                        <th *ngIf="product.alto">Alto</th>
-                        <td>{{product.alto}}</td>
-                    </tr>
-                    <tr *ngIf="product.ancho">
-                        <th *ngIf="product.ancho">Ancho</th>
-                        <td>{{product.ancho}}</td>
-                    </tr>
-                    <tr *ngIf="product.profundidad">
-                        <th *ngIf="product.profundidad">Profundidad</th>
-                        <td>{{product.profundidad}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+        <h3 *ngIf="product.modeloproducto" class="text-center mt-4">Detalles especificos: </h3>
+        <section class="row justify-content-evenly">
+                <table *ngIf="product.modeloproducto" class="table table-hover col-lg-6 col-md-4 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3 shadow-lg bg-body rounded">
+                    <tbody>
+                        <tr *ngIf="product.modeloproducto">
+                            <th>Modelo</th>
+                            <td>{{product.modeloproducto}}</td>
+                        </tr>
+                        <tr *ngIf="product.tipopantalla">
+                            <th>Tipo de pantalla</th>
+                            <td>{{product.tipopantalla}}</td>
+                        </tr>
+                        <tr *ngIf="product.tipoentrada">
+                            <th>Tipo de entrada</th>
+                            <td>{{product.tipoentrada}}</td>
+                        </tr>
+                        <tr *ngIf="product.sistemaoperativo">
+                            <th>Sistema operativo</th>
+                            <td>{{product.sistemaoperativo}}</td>
+                        </tr>
+                        <tr *ngIf="product.procesador">
+                            <th>Procesador</th>
+                            <td>{{product.procesador}}</td>
+                        </tr>
+                        <tr *ngIf="product.peso">
+                            <th>Peso</th>
+                            <td>{{product.peso+ " KG"}}</td>
+                        </tr>
+                        <tr *ngIf="product.alto">
+                            <th *ngIf="product.alto">Alto</th>
+                            <td>{{product.alto}}</td>
+                        </tr>
+                        <tr *ngIf="product.ancho">
+                            <th *ngIf="product.ancho">Ancho</th>
+                            <td>{{product.ancho}}</td>
+                        </tr>
+                        <tr *ngIf="product.profundidad">
+                            <th *ngIf="product.profundidad">Profundidad</th>
+                            <td>{{product.profundidad}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </section>
     </div>
     <!--Botones para editar y borrar-->
-    <div *ngIf="confirm==false">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <a [routerLink]="['/editar-producto', product._id]" class="btn btn-success">Editar producto</a>
+    <div class="container" *ngIf="token">
+        <div>
+            <div class="row justify-content-evenly">
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3 text-center">
+                    <a [routerLink]="['/editar-producto', product._id]" class="btn btn-success"><i
+                            class="bi bi-pencil-square"></i> Editar
+                        producto</a>
                 </div>
-                <div class="col">
-                    <a (click)="setConfirm(true)" class="btn btn-danger">Borrar producto</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <p class="mensajeConfirm" *ngIf="confirm==true">¿Estás seguro de eliminar el producto?</p>
-    <div *ngIf="confirm==true">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <a (click)="setConfirm(false)" class="btn btn-success">Cancelar</a>
-                </div>
-                <div class="col">
-                    <a (click)="deleteProduct(product._id)" class="btn btn-danger">Confirmar</a>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 m-lg-3 mb-3 mt-3 text-center">
+                    <a (click)="mostrarConfirmacion(product._id)" class="btn btn-danger "><i class="bi bi-trash"></i> Borrar
+                        producto</a>
                 </div>
             </div>
         </div>
     </div>
+
 
 </section>
